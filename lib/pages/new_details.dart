@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:news_wordpress_app/utilities/layout_utility.dart';
 
 class NewsDetail extends StatelessWidget {
   @override
@@ -33,7 +37,30 @@ class NewsDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row1()
+          Row1(),
+          LayoutUtils.iconText(Icon(Icons.timer), Text("01st Jan 2021")),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            "Vishv First News",
+            style: TextStyle(
+                fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            child: Divider(
+              color: Colors.grey,
+              thickness: 2,
+            ),
+            width: 100,
+          ),
+          Expanded(
+            child: Html(
+              style: {
+                "p" : Style(color : Colors.grey,fontSize: FontSize.large)
+              },
+                data: "<p>Test News</p></p>Test News Paragraph 2</p>"),
+          )
         ],
       ),
     );
@@ -48,20 +75,28 @@ class NewsDetail extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(10.0)
+                color: Colors.green, borderRadius: BorderRadius.circular(10.0)),
+            child: Text(
+              "Sports",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold),
             ),
-            child: Text("Sports",style: TextStyle(
-              color: Colors.white,
-              fontSize: 15.0,
-              fontWeight: FontWeight.bold
-            ),),
           ),
         ),
         Align(
           alignment: Alignment.topRight,
           child: Row(
             children: <Widget>[
-              
+              IconButton(
+                icon: Icon(Feather.moon),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Feather.bookmark),
+                onPressed: () {},
+              )
             ],
           ),
         )
